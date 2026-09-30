@@ -1,0 +1,17 @@
+name: CI lab
+
+on:
+  push:
+    branches:
+        - ci-lab
+
+jobs:
+  check-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Python syntax
+        run: python3 -m compilleall backend/app
