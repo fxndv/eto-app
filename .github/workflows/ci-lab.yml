@@ -14,4 +14,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check Python syntax
-        run: python3 -m compilleall backend/app
+        run: python3 -m compileall backend/app
