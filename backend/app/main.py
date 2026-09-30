@@ -124,4 +124,4 @@ def flaky_endpoint():
         # Raise a custom exception that should crash the application
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-    return {"message": "OK"}this is broken python git push -u origin ci-lab!
+    return {"message": "OK"}
