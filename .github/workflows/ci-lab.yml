@@ -42,7 +42,7 @@ jobs:
 
       - name: Build frontend
         working-directory: frontend
-        run: nmp run build
+        run: npm run build
 
   ci-gate:
     runs-on: ubuntu-latest
