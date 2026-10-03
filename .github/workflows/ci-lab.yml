@@ -67,3 +67,33 @@ jobs:
 
       - name: All checks passed
         run: echo "Backend and frontend checks passed"
+
+  build-backend-image:
+    runs-on: ubuntu-latest
+    needs:
+      - backend-check
+      - frontend-check
+
+    premissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-actions@v6
+        with:
+          context: backend
+          push: true
+          tags: |
+            ghcr.io/fxndv/eto-app-backend:${{ github.sha }}
+            ghcr.io/fxndv/eto-app-backend:latest
