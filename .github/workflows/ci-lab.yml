@@ -74,7 +74,7 @@ jobs:
       - backend-check
       - frontend-check
 
-    premissions:
+    permissions:
       contents: read
       packages: write
 
@@ -90,7 +90,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push backend image
-        uses: docker/build-push-actions@v6
+        uses: docker/build-push-action@v6
         with:
           context: backend
           push: true
